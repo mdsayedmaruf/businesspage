@@ -1,0 +1,155 @@
+---
+import Base from '../layouts/Base.astro';
+import QuoteForm from '../components/QuoteForm.astro';
+import Photo from '../components/Photo.astro';
+import TileBand from '../components/TileBand.astro';
+import Reviews from '../components/Reviews.astro';
+import CtaBand from '../components/CtaBand.astro';
+import { mapsHref, site, telHref, yearsInBusiness } from '../lib/site';
+---
+
+<Base title={site.seo.homeTitle} description={site.seo.homeDescription}>
+  <section class="relative isolate overflow-hidden bg-ink text-cream">
+    <Photo
+      file={site.hero.image}
+      alt={site.hero.imageAlt}
+      widths={[640, 960, 1280, 1920]}
+      sizes="100vw"
+      eager
+      class="absolute inset-0 -z-20 h-full w-full -scale-x-100 object-cover object-[50%_12%]"
+    />
+    <div class="absolute inset-0 -z-10 bg-ink/75 lg:bg-transparent lg:bg-gradient-to-r lg:from-ink lg:via-ink/85 lg:to-ink/5" aria-hidden="true"></div>
+    <div class="wrap pt-14 pb-16 lg:pt-24 lg:pb-52">
+      <div class="max-w-2xl">
+        <p class="eyebrow !text-sun">{site.hero.eyebrow}</p>
+        <h1 class="mt-3 text-6xl sm:text-7xl xl:text-[5.5rem]">{site.hero.headline}</h1>
+        <p class="mt-5 max-w-xl text-lg text-cream/90">{site.hero.body}</p>
+        <div class="mt-7 flex flex-col gap-3 sm:flex-row">
+          <a href={telHref} class="btn btn-tile">Call {site.phone}</a>
+          <a href="/services" class="btn btn-line">See our services</a>
+        </div>
+      </div>
+    </div>
+  </section>
+  <TileBand />
+
+  <section class="relative z-10 border-b border-line">
+    <div class="wrap grid items-center gap-10 py-10 lg:grid-cols-12 lg:py-12">
+      <div class="shadow-2xl lg:col-span-7 lg:-mt-52"><QuoteForm /></div>
+      <dl class="grid grid-cols-2 gap-6 lg:col-span-5 lg:pl-8">
+        <div><dt class="text-muted">Florida license</dt><dd class="font-display text-3xl font-bold">{site.license}</dd></div>
+        <div><dt class="text-muted">In business</dt><dd class="font-display text-3xl font-bold">{yearsInBusiness} years</dd></div>
+        <div><dt class="text-muted">{site.reviewSummary.source} rating</dt><dd class="font-display text-3xl font-bold">{site.reviewSummary.rating} of 5</dd></div>
+        <div><dt class="text-muted">Coverage</dt><dd class="font-display text-3xl font-bold">{site.insured ? 'Fully insured' : site.address.city}</dd></div>
+      </dl>
+    </div>
+  </section>
+
+  <section class="py-16 lg:py-24">
+    <div class="wrap grid gap-10 lg:grid-cols-12">
+      <div class="lg:sticky lg:top-28 lg:col-span-4 lg:self-start">
+        <p class="eyebrow">What we do</p>
+        <h2 class="section-title mt-2">Every kind of roof, from one crew.</h2>
+      </div>
+      <ul class="lg:col-span-8">
+        {
+          site.services.map((s) => (
+            <li class="border-t border-line last:border-b">
+              <a href={`/services/${s.slug}`} class="group grid grid-cols-[6rem_1fr] items-center gap-5 py-5 sm:grid-cols-[11rem_1fr]">
+                <Photo file={s.image} alt={s.imageAlt} art={s.art} widths={[200, 400]} sizes="(min-width: 640px) 11rem, 6rem" class="aspect-[20/13] w-full object-cover" />
+                <span>
+                  <span class="block font-display text-3xl font-bold group-hover:text-tile sm:text-4xl">{s.title}</span>
+                  <span class="mt-1 block text-muted">{s.short}</span>
+                </span>
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </section>
+
+  <section class="bg-sand py-16 lg:py-24">
+    <div class="wrap">
+      <p class="eyebrow">How it works</p>
+      <h2 class="section-title mt-2 max-w-2xl">No surprises, start to finish.</h2>
+      <ol class="mt-10 grid gap-8 md:grid-cols-4">
+        {
+          site.process.map((step, i) => (
+            <li class="border-t-4 border-ink pt-4">
+              <span class="font-display text-2xl font-bold text-tile">Step {i + 1}</span>
+              <h3 class="mt-1 text-3xl">{step.title}</h3>
+              <p class="mt-2 text-muted">{step.body}</p>
+            </li>
+          ))
+        }
+      </ol>
+    </div>
+  </section>
+
+  <Reviews />
+
+  <section class="py-16 lg:py-24">
+    <div class="wrap">
+      <div class="flex flex-wrap items-end justify-between gap-4">
+        <div>
+          <p class="eyebrow">Recent work</p>
+          <h2 class="section-title mt-2">Roofs around Tampa Bay.</h2>
+        </div>
+        <a href="/projects" class="font-semibold underline hover:text-tile">All projects and reviews</a>
+      </div>
+      <div class="mt-10 grid grid-cols-2 gap-3 lg:grid-cols-4 lg:grid-rows-[15rem_15rem]">
+        {
+          site.gallery.slice(0, 5).map((g, i) => (
+            <a href="/projects" class:list={['group relative block overflow-hidden', i === 0 ? 'col-span-2 aspect-[3/2] lg:row-span-2 lg:aspect-auto' : 'aspect-[4/3] lg:aspect-auto']}>
+              <Photo
+                file={g.image}
+                alt={`${g.title} in ${g.city}`}
+                art={g.art}
+                widths={i === 0 ? [640, 1000] : [320, 640]}
+                sizes={i === 0 ? '(min-width: 1024px) 50vw, 100vw' : '(min-width: 1024px) 25vw, 50vw'}
+                class="absolute inset-0 h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
+              />
+              <span class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-ink via-ink/70 to-transparent p-3 pt-12 text-cream">
+                <span class="block font-display text-2xl leading-tight font-bold">{g.title}</span>
+                <span class="block text-sm">{g.city}</span>
+              </span>
+            </a>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <section class="border-t border-line py-16 lg:py-24">
+    <div class="wrap grid gap-12 lg:grid-cols-2">
+      <div>
+        <p class="eyebrow">Service area</p>
+        <h2 class="section-title mt-2">Where we work.</h2>
+        <ul class="mt-6 grid grid-cols-2 gap-x-6 gap-y-2 text-lg">
+          {site.cities.map((c) => <li>{c}</li>)}
+        </ul>
+        <a href={mapsHref} rel="noopener" class="mt-6 inline-block font-semibold underline hover:text-tile">Open in Google Maps</a>
+      </div>
+      <div>
+        <p class="eyebrow">Questions</p>
+        <h2 class="section-title mt-2">Good to know.</h2>
+        <div class="mt-6">
+          {
+            site.faqs.map((f) => (
+              <details class="group border-t border-line py-3 last:border-b">
+                <summary class="flex list-none items-start justify-between gap-4 text-lg font-semibold">
+                  {f.q}
+                  <span class="font-display text-2xl leading-none text-tile group-open:rotate-45" aria-hidden="true">+</span>
+                </summary>
+                <p class="mt-2 text-muted">{f.a}</p>
+              </details>
+            ))
+          }
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <CtaBand />
+</Base>

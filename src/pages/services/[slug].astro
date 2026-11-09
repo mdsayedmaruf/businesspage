@@ -1,0 +1,32 @@
+---
+import Base from '../../layouts/Base.astro';
+import PageHead from '../../components/PageHead.astro';
+import QuoteForm from '../../components/QuoteForm.astro';
+import Photo from '../../components/Photo.astro';
+import CtaBand from '../../components/CtaBand.astro';
+import { site, type Service } from '../../lib/site';
+
+export function getStaticPaths() {
+  return site.services.map((service) => ({ params: { slug: service.slug }, props: { service } }));
+}
+
+const { service } = Astro.props as { service: Service };
+---
+
+<Base title={`${service.title} in ${site.address.city}, ${site.address.region}`} description={`${service.short} Serving ${site.address.city} and nearby cities.`}>
+  <PageHead eyebrow="Services" title={`${service.title} in ${site.address.city}`} />
+  <section class="py-14 lg:py-20">
+    <div class="wrap grid gap-12 lg:grid-cols-12">
+      <div class="lg:col-span-6">
+        <Photo file={service.image} alt={service.imageAlt} art={service.art} widths={[640, 1000]} sizes="(min-width: 1024px) 50vw, 100vw" eager class="aspect-[20/13] w-full object-cover" />
+        <p class="mt-6 text-lg">{service.body}</p>
+        <h2 class="mt-8 text-3xl">What's included</h2>
+        <ul class="mt-3 space-y-2">
+          {service.points.map((p) => <li class="border-l-4 border-tile pl-3">{p}</li>)}
+        </ul>
+      </div>
+      <div class="lg:col-span-6"><QuoteForm title={`Ask about ${service.title.toLowerCase()}`} /></div>
+    </div>
+  </section>
+  <CtaBand />
+</Base>

@@ -1,0 +1,41 @@
+---
+// Shows an optimized photo from src/assets/projects, or an illustration if there's no photo.
+import { Image } from 'astro:assets';
+import type { ImageMetadata } from 'astro';
+import RoofArt from './RoofArt.astro';
+import type { ArtVariant } from '../lib/site';
+
+interface Props {
+  file?: string;
+  alt: string;
+  art?: string;
+  widths: number[];
+  sizes: string;
+  class?: string;
+  eager?: boolean;
+}
+
+const { file, alt, art = 'shingle', widths, sizes, class: className = '', eager = false } = Astro.props;
+const photos = import.meta.glob<{ default: ImageMetadata }>('/src/assets/projects/*.{jpg,jpeg,png,webp,avif}');
+const loader = file ? photos[`/src/assets/projects/${file}`] : undefined;
+if (file && !loader) throw new Error(`Photo not found: src/assets/projects/${file}`);
+const photo = loader ? (await loader()).default : undefined;
+---
+
+{
+  photo ? (
+    <Image
+      src={photo}
+      alt={alt}
+      widths={widths}
+      sizes={sizes}
+      format="webp"
+      quality={72}
+      loading={eager ? 'eager' : 'lazy'}
+      fetchpriority={eager ? 'high' : 'auto'}
+      class={className}
+    />
+  ) : (
+    <RoofArt variant={art as ArtVariant} class={className} />
+  )
+}

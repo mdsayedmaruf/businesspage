@@ -1,0 +1,28 @@
+---
+import Base from '../layouts/Base.astro';
+import PageHead from '../components/PageHead.astro';
+import Photo from '../components/Photo.astro';
+import CtaBand from '../components/CtaBand.astro';
+import { site, yearsInBusiness } from '../lib/site';
+---
+
+<Base title="About Us" description={`Meet ${site.name}, a licensed and insured roofing contractor serving ${site.address.city} and nearby cities.`}>
+  <PageHead eyebrow="About" title={site.about.headline} />
+  <section class="py-14 lg:py-20">
+    <div class="wrap grid gap-12 lg:grid-cols-2">
+      <div class="prose-site text-lg">
+        {site.about.paragraphs.map((p) => <p>{p}</p>)}
+      </div>
+      <div>
+        <Photo file={site.about.image} alt={site.about.imageAlt} widths={[640, 1000]} sizes="(min-width: 1024px) 50vw, 100vw" class="aspect-[20/13] w-full object-cover" />
+        <dl class="mt-6 grid grid-cols-2 gap-6">
+          <div><dt class="text-muted">Owner</dt><dd class="font-display text-3xl font-bold">{site.owner}</dd></div>
+          <div><dt class="text-muted">In business</dt><dd class="font-display text-3xl font-bold">{yearsInBusiness} years</dd></div>
+          <div><dt class="text-muted">Florida license</dt><dd class="font-display text-3xl font-bold">{site.license}</dd></div>
+          <div><dt class="text-muted">Insurance</dt><dd class="font-display text-3xl font-bold">{site.insured ? 'Fully insured' : 'Ask us'}</dd></div>
+        </dl>
+      </div>
+    </div>
+  </section>
+  <CtaBand />
+</Base>

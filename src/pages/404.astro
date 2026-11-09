@@ -1,0 +1,14 @@
+---
+import Base from '../layouts/Base.astro';
+import PageHead from '../components/PageHead.astro';
+import { site, telHref } from '../lib/site';
+---
+
+<Base title="Page Not Found" description="That page doesn't exist." noindex>
+  <PageHead eyebrow="404" title="That page has blown away." />
+  <section class="py-14">
+    <div class="wrap text-lg">
+      <p><a href="/" class="font-semibold underline">Go to the home page</a>, or call <a href={telHref} class="font-semibold underline">{site.phone}</a>.</p>
+    </div>
+  </section>
+</Base>

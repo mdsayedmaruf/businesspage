@@ -1,0 +1,19 @@
+---
+import Base from '../layouts/Base.astro';
+import PageHead from '../components/PageHead.astro';
+import GalleryTile from '../components/GalleryTile.astro';
+import Reviews from '../components/Reviews.astro';
+import CtaBand from '../components/CtaBand.astro';
+import { site } from '../lib/site';
+---
+
+<Base title="Projects and Reviews" description={`Recent roofing projects and customer reviews from ${site.name} in ${site.address.city} and nearby cities.`}>
+  <PageHead eyebrow="Projects and reviews" title="Work we're happy to put our name on." />
+  <section class="py-14 lg:py-20">
+    <div class="wrap grid grid-cols-2 gap-x-4 gap-y-8 md:grid-cols-3 md:gap-x-8">
+      {site.gallery.map((g, i) => <GalleryTile {...g} eager={i === 0} />)}
+    </div>
+  </section>
+  <Reviews />
+  <CtaBand />
+</Base>

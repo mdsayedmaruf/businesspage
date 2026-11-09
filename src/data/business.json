@@ -1,0 +1,158 @@
+{
+  "demo": true,
+  "name": "Palmetto Ridge Roofing",
+  "url": "https://example.com",
+  "phone": "(813) 555-0142",
+  "phoneE164": "+18135550142",
+  "email": "hello@example.com",
+  "license": "CCC0000000",
+  "insured": true,
+  "founded": 2009,
+  "owner": "Dana Whitfield",
+  "address": {
+    "street": "100 Sample Street",
+    "city": "Tampa",
+    "region": "FL",
+    "postal": "33602"
+  },
+  "mapsQuery": "Tampa, FL",
+  "hours": [
+    { "label": "Mon to Fri", "value": "7am to 6pm", "schema": "Mo-Fr 07:00-18:00" },
+    { "label": "Saturday", "value": "8am to 12pm", "schema": "Sa 08:00-12:00" }
+  ],
+  "turnstileSiteKey": "",
+  "theme": {
+    "ink": "#16232b",
+    "ink2": "#223641",
+    "tile": "#b5432a",
+    "tile2": "#8f3320",
+    "sun": "#eba63f",
+    "sand": "#f1e8da",
+    "cream": "#fbf7f0",
+    "line": "#dccfbc",
+    "muted": "#52626b"
+  },
+  "seo": {
+    "homeTitle": "Roofing Contractor in Tampa, FL",
+    "homeDescription": "Licensed and insured Tampa Bay roofers for roof replacement, repair, tile and metal roofing. Call Palmetto Ridge Roofing or request a quote online."
+  },
+  "hero": {
+    "image": "crew-hero.jpg",
+    "imageAlt": "Two roofers in safety harnesses working on a shingle roof",
+    "eyebrow": "Tampa Bay roofing contractor",
+    "headline": "Roofs built for Florida weather.",
+    "body": "Replacement, repair and tile work from a licensed local crew. You get a clear written quote, and one person to call from start to finish."
+  },
+  "reviewSummary": { "rating": 4.9, "count": 186, "source": "Google" },
+  "services": [
+    {
+      "slug": "roof-replacement",
+      "title": "Roof replacement",
+      "short": "Full tear-off and new shingle, tile or metal roof, usually finished in a few days.",
+      "art": "shingle",
+      "image": "crew-shingles.jpg",
+      "imageAlt": "Roofers installing a new shingle roof",
+      "body": "When repairs stop making sense, we remove the old roof down to the deck, replace any damaged wood, and install a complete new system. You'll know the materials, price and schedule in writing before work starts.",
+      "points": ["Full tear-off and deck check", "Permit and inspection handled", "Magnetic sweep for nails at cleanup", "Written warranty details at signing"]
+    },
+    {
+      "slug": "roof-repair",
+      "title": "Roof repair",
+      "short": "Leaks, lifted shingles, cracked tile and worn flashing, tracked to the actual source.",
+      "art": "repair",
+      "image": "repair-seal.jpg",
+      "imageAlt": "A roofer in a safety harness sealing a roof",
+      "body": "A stain on the ceiling often starts somewhere else on the roof. We trace the leak to its source, show you photos of what we found, and repair only what needs repairing.",
+      "points": ["Leak tracing with photo evidence", "Shingle, tile and flat roof repairs", "Flashing, vents and valleys", "Straight answer on repair versus replace"]
+    },
+    {
+      "slug": "tile-and-metal-roofing",
+      "title": "Tile and metal roofing",
+      "short": "Barrel tile, flat tile and standing seam metal, installed to Florida code.",
+      "art": "tile",
+      "image": "tile-red.jpg",
+      "imageAlt": "A red tile roof beneath green trees",
+      "body": "Tile and metal roofs last for decades when the underlayment and fastening are done right. Our crews install and repair both, and we'll walk you through which one suits your home and budget.",
+      "points": ["Barrel and flat concrete tile", "Standing seam metal", "Underlayment replacement", "Matching for partial repairs"]
+    },
+    {
+      "slug": "roof-inspections",
+      "title": "Roof inspections",
+      "short": "A photo report on your roof's condition, for homeowners, buyers and sellers.",
+      "art": "inspect",
+      "image": "inspection.jpg",
+      "imageAlt": "A roofer standing on a house roof beside a ladder",
+      "body": "We walk the roof, check the attic where we can reach it, and send you a plain-language report with photos, so you can plan ahead instead of finding out during a storm.",
+      "points": ["Photo report within 2 business days", "Estimated remaining life", "Priority list of any repairs", "Useful before buying or selling"]
+    },
+    {
+      "slug": "storm-damage-repair",
+      "title": "Storm damage repair",
+      "short": "Temporary dry-in fast, then permanent repairs after high wind or fallen limbs.",
+      "art": "storm",
+      "image": "tear-off.jpg",
+      "imageAlt": "A roofer removing damaged shingles from a roof",
+      "body": "After a storm, the first job is keeping water out. We secure the damaged area, document what we find, and schedule the permanent repair as soon as materials and weather allow.",
+      "points": ["Emergency tarping and dry-in", "Photo documentation of damage", "Wind and impact repairs", "Clear schedule for permanent work"]
+    }
+  ],
+  "process": [
+    { "title": "Call or send a request", "body": "Tell us what's going on. Someone from our office replies within one business day." },
+    { "title": "We inspect the roof", "body": "You get photos of what we found, not just a verbal opinion." },
+    { "title": "Written quote", "body": "Materials, price and schedule on paper, with no pressure to sign." },
+    { "title": "Install and cleanup", "body": "We handle permits, finish the job, and leave the yard clean." }
+  ],
+  "reviews": [
+    {
+      "name": "Marisol T.",
+      "city": "Brandon",
+      "text": "They showed me photos of exactly where the leak started and fixed that one section. Another company had told me I needed a whole new roof."
+    },
+    {
+      "name": "Greg P.",
+      "city": "Clearwater",
+      "text": "The quote matched the final bill to the dollar. Crew finished in three days and swept the yard for nails."
+    },
+    {
+      "name": "Alana R.",
+      "city": "St. Petersburg",
+      "text": "Dana answered every question I had about tile versus metal without pushing either one."
+    }
+  ],
+  "gallery": [
+    { "title": "Standing seam metal", "city": "St. Petersburg", "art": "metal", "image": "home-metal.jpg" },
+    { "title": "Barrel tile replacement", "city": "Clearwater", "art": "tile", "image": "tile-barrel.jpg" },
+    { "title": "Complete re-roof", "city": "Tampa", "art": "shingle", "image": "home-palms.jpg" },
+    { "title": "Shingle installation", "city": "Riverview", "art": "shingle", "image": "crew-install.jpg" },
+    { "title": "Shingle replacement", "city": "Brandon", "art": "shingle", "image": "home-shingle.jpg" },
+    { "title": "Tile re-roof", "city": "Largo", "art": "tile", "image": "home-tile.jpg" }
+  ],
+  "cities": ["Tampa", "St. Petersburg", "Clearwater", "Brandon", "Riverview", "Largo", "Wesley Chapel", "Plant City"],
+  "faqs": [
+    {
+      "q": "How long does a roof replacement take?",
+      "a": "Most homes take two to four working days once materials arrive. Tile and larger roofs can take longer, and weather can shift the schedule. We'll give you a realistic date in your quote."
+    },
+    {
+      "q": "Are you licensed and insured?",
+      "a": "Yes. Our Florida license number is shown at the bottom of every page, and we can send proof of insurance on request."
+    },
+    {
+      "q": "Do you handle permits?",
+      "a": "Yes. We pull the required permits and schedule the inspections with your local building department."
+    },
+    {
+      "q": "Can you repair my roof instead of replacing it?",
+      "a": "Often, yes. If a repair will solve the problem, that's what we'll recommend, and we'll show you photos so you can see why."
+    }
+  ],
+  "about": {
+    "image": "metal-hands.jpg",
+    "imageAlt": "A roofer's hands fastening metal roofing with a tool",
+    "headline": "A local crew, and one person to call.",
+    "paragraphs": [
+      "Dana Whitfield started Palmetto Ridge in 2009 after years on tile and shingle crews around Tampa Bay. The idea was simple: tell homeowners what's really happening on their roof, show them the photos, and put the price in writing.",
+      "We still work that way. Your project has one point of contact from the first visit to the final inspection, and the crew on your roof is the crew we know."
+    ]
+  }
+}

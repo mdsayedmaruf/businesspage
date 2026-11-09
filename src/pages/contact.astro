@@ -1,0 +1,24 @@
+---
+import Base from '../layouts/Base.astro';
+import PageHead from '../components/PageHead.astro';
+import QuoteForm from '../components/QuoteForm.astro';
+import { mapsHref, site, telHref } from '../lib/site';
+---
+
+<Base title="Contact Us" description={`Call ${site.phone} or request a roofing quote from ${site.name}, serving ${site.address.city} and nearby cities.`}>
+  <PageHead eyebrow="Contact" title="Let's take a look at your roof." />
+  <section class="py-14 lg:py-20">
+    <div class="wrap grid gap-12 lg:grid-cols-12">
+      <div class="lg:col-span-5">
+        <a href={telHref} class="font-display text-5xl font-bold hover:text-tile">{site.phone}</a>
+        <a href={`mailto:${site.email}`} class="mt-2 block text-lg underline">{site.email}</a>
+        <h2 class="mt-8 text-3xl">Hours</h2>
+        <ul class="mt-2">{site.hours.map((h) => <li>{h.label}: {h.value}</li>)}</ul>
+        <h2 class="mt-8 text-3xl">Office</h2>
+        <address class="mt-2 not-italic">{site.address.street}<br />{site.address.city}, {site.address.region} {site.address.postal}</address>
+        <a href={mapsHref} rel="noopener" class="mt-3 inline-block font-semibold underline hover:text-tile">Open in Google Maps</a>
+      </div>
+      <div class="lg:col-span-7"><QuoteForm /></div>
+    </div>
+  </section>
+</Base>

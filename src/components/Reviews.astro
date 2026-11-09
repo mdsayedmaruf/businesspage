@@ -1,0 +1,27 @@
+---
+import { site } from '../lib/site';
+
+const [lead, ...rest] = site.reviews;
+---
+
+<section class="bg-ink py-16 text-cream lg:py-24">
+  <div class="wrap grid gap-12 lg:grid-cols-12">
+    <figure class="lg:col-span-7">
+      <p class="font-display text-xl font-semibold tracking-wide text-sun uppercase">
+        {site.reviewSummary.rating} stars from {site.reviewSummary.count} {site.reviewSummary.source} reviews{site.demo && ' (sample data)'}
+      </p>
+      <blockquote class="mt-5 font-display text-4xl leading-tight font-semibold sm:text-5xl">"{lead.text}"</blockquote>
+      <figcaption class="mt-5 text-cream/80">{lead.name}, {lead.city}</figcaption>
+    </figure>
+    <div class="grid content-end gap-8 lg:col-span-5">
+      {
+        rest.map((r) => (
+          <figure class="border-l-4 border-tile pl-5">
+            <blockquote>"{r.text}"</blockquote>
+            <figcaption class="mt-2 text-cream/70">{r.name}, {r.city}</figcaption>
+          </figure>
+        ))
+      }
+    </div>
+  </div>
+</section>

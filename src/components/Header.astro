@@ -1,0 +1,25 @@
+---
+import Logo from './Logo.astro';
+import { nav, site, telHref } from '../lib/site';
+---
+
+<header class="sticky top-0 z-40 border-b border-white/10 bg-ink text-cream">
+  <div class="wrap flex h-16 items-center justify-between gap-4 lg:h-20">
+    <Logo />
+    <nav aria-label="Main" class="hidden items-center gap-7 lg:flex">
+      {nav.map((item) => <a href={item.href} class="font-semibold hover:text-sun">{item.label}</a>)}
+      <a href={telHref} class="btn btn-tile">{site.phone}</a>
+    </nav>
+    <details class="relative lg:hidden">
+      <summary class="flex h-11 list-none items-center px-2 font-display text-xl font-semibold tracking-wide">Menu</summary>
+      <nav aria-label="Mobile" class="absolute top-full right-0 mt-3 w-64 bg-ink2 p-2 shadow-xl">
+        {nav.map((item) => <a href={item.href} class="block px-3 py-3 font-semibold hover:text-sun">{item.label}</a>)}
+      </nav>
+    </details>
+  </div>
+</header>
+
+<div class="fixed inset-x-0 bottom-0 z-40 grid grid-cols-2 lg:hidden">
+  <a href={telHref} class="btn btn-tile h-16">Call now</a>
+  <a href="/contact" class="btn h-16 bg-ink text-cream">Get a quote</a>
+</div>

@@ -1,0 +1,18 @@
+---
+import TileBand from './TileBand.astro';
+
+interface Props {
+  eyebrow: string;
+  title: string;
+}
+
+const { eyebrow, title } = Astro.props;
+---
+
+<section class="bg-ink py-12 text-cream lg:py-16">
+  <div class="wrap">
+    <p class="eyebrow !text-sun">{eyebrow}</p>
+    <h1 class="mt-2 max-w-3xl text-6xl sm:text-7xl">{title}</h1>
+  </div>
+</section>
+<TileBand />

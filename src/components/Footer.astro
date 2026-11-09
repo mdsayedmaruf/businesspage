@@ -1,0 +1,33 @@
+---
+import Logo from './Logo.astro';
+import TileBand from './TileBand.astro';
+import { nav, site, telHref } from '../lib/site';
+---
+
+<TileBand />
+<footer class="bg-ink pt-14 pb-10 text-cream">
+  <div class="wrap grid gap-10 md:grid-cols-3">
+    <div>
+      <Logo />
+      <p class="mt-4 max-w-xs text-cream/80">
+        Florida license {site.license}{site.insured && '. Licensed and insured'}.
+      </p>
+    </div>
+    <div>
+      <h2 class="text-2xl">Get in touch</h2>
+      <a href={telHref} class="mt-3 block font-semibold hover:text-sun">{site.phone}</a>
+      <a href={`mailto:${site.email}`} class="block hover:text-sun">{site.email}</a>
+      <ul class="mt-3 text-cream/80">
+        {site.hours.map((h) => <li>{h.label}: {h.value}</li>)}
+      </ul>
+    </div>
+    <nav aria-label="Footer">
+      <h2 class="text-2xl">Pages</h2>
+      <ul class="mt-3 space-y-1">
+        {nav.map((item) => <li><a href={item.href} class="hover:text-sun">{item.label}</a></li>)}
+        <li><a href="/privacy" class="hover:text-sun">Privacy</a></li>
+      </ul>
+    </nav>
+  </div>
+  <p class="wrap mt-10 text-sm text-cream/70">&copy; {new Date().getFullYear()} {site.name}. {site.address.city}, {site.address.region}.</p>
+</footer>

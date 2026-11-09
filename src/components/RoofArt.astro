@@ -1,0 +1,63 @@
+---
+// Stand-in artwork for when real project photos aren't available yet.
+import type { ArtVariant } from '../lib/site';
+
+interface Props {
+  variant: ArtVariant;
+  class?: string;
+}
+
+const { variant, class: className = '' } = Astro.props;
+const id = `art-${Math.random().toString(36).slice(2, 8)}`;
+---
+
+<svg viewBox="0 0 400 260" class={`block ${className}`} aria-hidden="true">
+  <defs>
+    {
+      (variant === 'shingle' || variant === 'repair' || variant === 'storm' || variant === 'inspect') && (
+        <pattern id={id} width="44" height="28" patternUnits="userSpaceOnUse">
+          <rect width="44" height="28" class="fill-ink2" />
+          <path d="M0 14h44M0 28h44M11 0v14M33 0v14M0 14v14M22 14v14" class="stroke-ink" stroke-width="2" />
+        </pattern>
+      )
+    }
+    {
+      variant === 'tile' && (
+        <pattern id={id} width="40" height="30" patternUnits="userSpaceOnUse">
+          <rect width="40" height="30" class="fill-tile2" />
+          <path d="M0 30V14a20 14 0 0 1 40 0v16z" class="fill-tile" />
+        </pattern>
+      )
+    }
+    {
+      variant === 'metal' && (
+        <pattern id={id} width="34" height="34" patternUnits="userSpaceOnUse">
+          <rect width="34" height="34" class="fill-muted" />
+          <rect width="5" height="34" class="fill-ink2" />
+        </pattern>
+      )
+    }
+  </defs>
+  <rect width="400" height="260" class={variant === 'storm' ? 'fill-ink2' : 'fill-sand'} />
+  {variant !== 'storm' && <circle cx="318" cy="66" r="38" class="fill-sun" />}
+  {
+    variant === 'storm' && (
+      <g class="stroke-sand" stroke-width="3" stroke-linecap="round">
+        <path d="M60 28 44 62M126 18l-16 34M196 34l-16 34M268 18l-16 34M342 30l-16 34" />
+      </g>
+    )
+  }
+  <rect x="64" y="172" width="272" height="88" class="fill-cream" />
+  <rect x="172" y="196" width="56" height="64" class="fill-ink" />
+  <path d="M20 182 200 62l180 120z" fill={`url(#${id})`} class={variant === 'storm' ? 'stroke-sand' : 'stroke-ink'} stroke-width="4" stroke-linejoin="round" />
+  {variant === 'repair' && <path d="M172 118h58v34h-58z" class="fill-tile" />}
+  {
+    variant === 'inspect' && (
+      <g class="fill-none stroke-tile" stroke-width="9" stroke-linecap="round">
+        <circle cx="200" cy="124" r="32" />
+        <path d="m224 148 30 30" />
+      </g>
+    )
+  }
+  {variant === 'storm' && <path d="M250 120l40-16-12 28 34-8" class="fill-none stroke-sun" stroke-width="7" stroke-linejoin="round" />}
+</svg>

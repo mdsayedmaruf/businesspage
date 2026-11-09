@@ -1,0 +1,21 @@
+---
+import Photo from './Photo.astro';
+
+interface Props {
+  title: string;
+  city: string;
+  art: string;
+  image?: string;
+  eager?: boolean;
+}
+
+const { title, city, art, image, eager = false } = Astro.props;
+---
+
+<figure>
+  <Photo file={image} alt={`${title} in ${city}`} art={art} widths={[400, 800]} sizes="(min-width: 768px) 33vw, 50vw" eager={eager} class="aspect-[20/13] w-full object-cover" />
+  <figcaption class="mt-3">
+    <span class="font-display text-2xl font-bold">{title}</span>
+    <span class="block text-muted">{city}</span>
+  </figcaption>
+</figure>

@@ -1,0 +1,16 @@
+---
+import Base from '../layouts/Base.astro';
+import PageHead from '../components/PageHead.astro';
+import { site } from '../lib/site';
+---
+
+<Base title="Privacy" description={`How ${site.name} handles information sent through this website.`} noindex>
+  <PageHead eyebrow="Privacy" title="Your information." />
+  <section class="py-14">
+    <div class="wrap prose-site max-w-3xl text-lg">
+      <p>When you send a request through this website, we receive the details you enter, such as your name, phone number, email address and project information. We use them only to respond to your request and provide our services.</p>
+      <p>We don't sell your information. The site uses Cloudflare to deliver pages and block automated spam, and an email service to deliver your request to us.</p>
+      <p>To ask about or remove your information, email <a href={`mailto:${site.email}`} class="underline">{site.email}</a>.</p>
+    </div>
+  </section>
+</Base>

@@ -1,0 +1,54 @@
+---
+import { site, telHref } from '../lib/site';
+
+interface Props {
+  title?: string;
+}
+
+const { title = 'Request a quote' } = Astro.props;
+const uid = Math.random().toString(36).slice(2, 7);
+const turnstile = site.turnstileSiteKey;
+---
+
+<form action="/api/contact" method="post" data-quote-form data-demo={String(site.demo)} class="relative grid gap-3 bg-sand p-5 text-ink sm:grid-cols-2 sm:p-7">
+  <h2 class="text-4xl sm:col-span-2">{title}</h2>
+  <p class="-mt-2 text-muted sm:col-span-2">Or call <a href={telHref} class="font-semibold text-ink underline">{site.phone}</a></p>
+
+  <div>
+    <label class="field-label" for={`name-${uid}`}>Name</label>
+    <input class="field" id={`name-${uid}`} name="name" autocomplete="name" required minlength="2" maxlength="100" />
+  </div>
+  <div>
+    <label class="field-label" for={`phone-${uid}`}>Phone</label>
+    <input class="field" id={`phone-${uid}`} name="phone" type="tel" autocomplete="tel" required minlength="10" maxlength="30" />
+  </div>
+  <div>
+    <label class="field-label" for={`email-${uid}`}>Email <span class="font-normal text-muted">(optional)</span></label>
+    <input class="field" id={`email-${uid}`} name="email" type="email" autocomplete="email" maxlength="200" />
+  </div>
+  <div>
+    <label class="field-label" for={`service-${uid}`}>What do you need?</label>
+    <select class="field" id={`service-${uid}`} name="service">
+      {site.services.map((s) => <option>{s.title}</option>)}
+      <option>Something else</option>
+    </select>
+  </div>
+  <div class="sm:col-span-2">
+    <label class="field-label" for={`message-${uid}`}>Details <span class="font-normal text-muted">(optional)</span></label>
+    <textarea class="field" id={`message-${uid}`} name="message" rows="3" maxlength="2000"></textarea>
+  </div>
+
+  <div class="hp-field" aria-hidden="true">
+    <label>Leave this empty <input name="company_site" tabindex="-1" autocomplete="off" /></label>
+  </div>
+
+  {turnstile && <div class="cf-turnstile sm:col-span-2" data-sitekey={turnstile}></div>}
+  {turnstile && <noscript><p class="font-semibold sm:col-span-2">This form needs JavaScript. Please call us instead.</p></noscript>}
+
+  <button type="submit" class="btn btn-tile w-full sm:col-span-2">Send my request</button>
+  <p data-form-status role="status" class="font-semibold sm:col-span-2" hidden></p>
+</form>
+
+<script>
+  import '../scripts/quote-form';
+</script>

@@ -1,0 +1,14 @@
+---
+import Base from '../layouts/Base.astro';
+import PageHead from '../components/PageHead.astro';
+import { site, telHref } from '../lib/site';
+---
+
+<Base title="Thank You" description="Your request was sent." noindex>
+  <PageHead eyebrow="Request sent" title="Thanks. We've got it." />
+  <section class="py-14">
+    <div class="wrap text-lg">
+      <p>We'll be in touch within one business day. Need us sooner? Call <a href={telHref} class="font-semibold underline">{site.phone}</a>.</p>
+    </div>
+  </section>
+</Base>

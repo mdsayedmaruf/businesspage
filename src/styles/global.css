@@ -1,0 +1,136 @@
+@import '@fontsource/barlow/latin-400.css';
+@import '@fontsource/barlow/latin-600.css';
+@import '@fontsource/barlow-condensed/latin-600.css';
+@import '@fontsource/barlow-condensed/latin-700.css';
+@import 'tailwindcss';
+@import './theme.generated.css';
+
+@theme inline {
+  --color-ink: var(--brand-ink);
+  --color-ink2: var(--brand-ink2);
+  --color-tile: var(--brand-tile);
+  --color-tile2: var(--brand-tile2);
+  --color-sun: var(--brand-sun);
+  --color-sand: var(--brand-sand);
+  --color-cream: var(--brand-cream);
+  --color-line: var(--brand-line);
+  --color-muted: var(--brand-muted);
+  --font-sans: 'Barlow', ui-sans-serif, system-ui, sans-serif;
+  --font-display: 'Barlow Condensed', 'Arial Narrow', sans-serif;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+  body {
+    background: var(--color-cream);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    font-size: 1.0625rem;
+    line-height: 1.6;
+  }
+  h1,
+  h2,
+  h3 {
+    font-family: var(--font-display);
+    font-weight: 700;
+    line-height: 1.02;
+    text-wrap: balance;
+  }
+  :focus-visible {
+    outline: 3px solid var(--color-sun);
+    outline-offset: 2px;
+  }
+  summary {
+    cursor: pointer;
+  }
+  summary::-webkit-details-marker {
+    display: none;
+  }
+}
+
+@layer components {
+  .wrap {
+    width: 100%;
+    max-width: 76rem;
+    margin-inline: auto;
+    padding-inline: 1.25rem;
+  }
+  .eyebrow {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 1.0625rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--color-tile);
+  }
+  .section-title {
+    font-size: clamp(2.5rem, 5vw, 3.75rem);
+  }
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    min-height: 3rem;
+    padding: 0.625rem 1.5rem;
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 1.25rem;
+    letter-spacing: 0.02em;
+    transition: background-color 0.15s, color 0.15s, border-color 0.15s;
+  }
+  .btn-tile {
+    background: var(--color-tile);
+    color: #fff;
+  }
+  .btn-tile:hover {
+    background: var(--color-tile2);
+  }
+  .btn-line {
+    border: 2px solid currentColor;
+  }
+  .btn-line:hover {
+    background: var(--color-cream);
+    border-color: var(--color-cream);
+    color: var(--color-ink);
+  }
+  .field-label {
+    display: block;
+    margin-bottom: 0.25rem;
+    font-weight: 600;
+    font-size: 0.9375rem;
+  }
+  .field {
+    width: 100%;
+    min-height: 3rem;
+    padding: 0.5rem 0.75rem;
+    background: #fff;
+    border: 1px solid var(--color-muted);
+    color: var(--color-ink);
+  }
+  .field:focus {
+    border-color: var(--color-tile);
+  }
+  .prose-site p + p {
+    margin-top: 1rem;
+  }
+  .hp-field {
+    position: absolute;
+    left: -9999px;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  * {
+    transition: none !important;
+  }
+}

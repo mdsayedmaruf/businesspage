@@ -1,0 +1,6 @@
+# Copy to .dev.vars for local testing. In production, set these as encrypted
+# variables on the Cloudflare Pages project. Never commit real values.
+TURNSTILE_SECRET_KEY=
+RESEND_API_KEY=
+CONTACT_TO=owner@client-domain.com
+CONTACT_FROM=Website <leads@your-verified-domain.com>

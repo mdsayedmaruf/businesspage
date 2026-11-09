@@ -11,7 +11,8 @@ export default defineConfig({
     // External files only, so the Content Security Policy can forbid inline code.
     inlineStylesheets: 'never',
   },
-  integrations: [sitemap()],
+  // Pages marked noindex must stay out of the sitemap too.
+  integrations: [sitemap({ filter: (page) => !/\/(thanks|privacy)\/?$/.test(new URL(page).pathname) })],
   vite: {
     plugins: [tailwindcss()],
     build: { assetsInlineLimit: 0 },

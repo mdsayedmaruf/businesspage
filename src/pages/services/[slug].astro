@@ -11,9 +11,31 @@ export function getStaticPaths() {
 }
 
 const { service } = Astro.props as { service: Service };
+const pageUrl = new URL(`/services/${service.slug}/`, site.url).toString();
+const otherServices = site.services.filter((s) => s.slug !== service.slug);
+
+const schema = [
+  {
+    '@type': 'Service',
+    name: service.title,
+    description: service.short,
+    url: pageUrl,
+    serviceType: service.title,
+    provider: { '@id': new URL('/#business', site.url).toString() },
+    areaServed: site.cities.map((name) => ({ '@type': 'City', name })),
+  },
+  {
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Home', item: new URL('/', site.url).toString() },
+      { '@type': 'ListItem', position: 2, name: 'Services', item: new URL('/services/', site.url).toString() },
+      { '@type': 'ListItem', position: 3, name: service.title, item: pageUrl },
+    ],
+  },
+];
 ---
 
-<Base title={`${service.title} in ${site.address.city}, ${site.address.region}`} description={`${service.short} Serving ${site.address.city} and nearby cities.`}>
+<Base title={`${service.title} in ${site.address.city}, ${site.address.region}`} description={`${service.short} Serving ${site.address.city} and nearby cities.`} schema={schema}>
   <PageHead eyebrow="Services" title={`${service.title} in ${site.address.city}`} />
   <section class="py-14 lg:py-20">
     <div class="wrap grid gap-12 lg:grid-cols-12">
@@ -23,6 +45,12 @@ const { service } = Astro.props as { service: Service };
         <h2 class="mt-8 text-3xl">What's included</h2>
         <ul class="mt-3 space-y-2">
           {service.points.map((p) => <li class="border-l-4 border-tile pl-3">{p}</li>)}
+        </ul>
+        <h2 class="mt-8 text-3xl">Areas we serve</h2>
+        <p class="mt-3">{service.title} across {site.cities.slice(0, -1).join(', ')} and {site.cities.at(-1)}.</p>
+        <h2 class="mt-8 text-3xl">Other roofing services</h2>
+        <ul class="mt-3 space-y-2">
+          {otherServices.map((s) => <li><a href={`/services/${s.slug}/`} class="font-semibold underline hover:text-tile">{s.title} in {site.address.city}</a></li>)}
         </ul>
       </div>
       <div class="lg:col-span-6"><QuoteForm title={`Ask about ${service.title.toLowerCase()}`} /></div>

@@ -2,7 +2,7 @@
 import { readFileSync, writeFileSync } from 'node:fs';
 
 const business = JSON.parse(readFileSync('src/data/business.json', 'utf8'));
-const hideFromSearch = business.demo === true;
+const hideFromSearch = business.demo === true && business.demoIndexable !== true;
 
 const csp = [
   "default-src 'none'",

@@ -5,7 +5,7 @@ import QuoteForm from '../components/QuoteForm.astro';
 import { mapsHref, site, telHref } from '../lib/site';
 ---
 
-<Base title="Contact Us" description={`Call ${site.phone} or request a roofing quote from ${site.name}, serving ${site.address.city} and nearby cities.`}>
+<Base title={`Contact Our ${site.address.city} Roofers`} description={`Call ${site.phone} or request a roofing quote from ${site.name}, serving ${site.address.city} and nearby cities.`}>
   <PageHead eyebrow="Contact" title="Let's take a look at your roof." />
   <section class="py-14 lg:py-20">
     <div class="wrap grid gap-12 lg:grid-cols-12">

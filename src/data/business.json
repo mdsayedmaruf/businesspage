@@ -1,7 +1,8 @@
 {
   "demo": true,
+  "demoIndexable": true,
   "name": "Palmetto Ridge Roofing",
-  "url": "https://example.com",
+  "url": "https://businesspage.sayedmarufprof.workers.dev",
   "phone": "(813) 555-0142",
   "phoneE164": "+18135550142",
   "email": "hello@example.com",
@@ -40,7 +41,7 @@
     "image": "crew-hero.jpg",
     "imageAlt": "Two roofers in safety harnesses working on a shingle roof",
     "eyebrow": "Tampa Bay roofing contractor",
-    "headline": "Roofs built for Florida weather.",
+    "headline": "Tampa Bay roofs built for Florida weather.",
     "body": "Replacement, repair and tile work from a licensed local crew. You get a clear written quote, and one person to call from start to finish."
   },
   "reviewSummary": { "rating": 4.9, "count": 186, "source": "Google" },

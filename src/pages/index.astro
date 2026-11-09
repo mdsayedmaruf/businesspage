@@ -26,7 +26,7 @@ import { mapsHref, site, telHref, yearsInBusiness } from '../lib/site';
         <p class="mt-5 max-w-xl text-lg text-cream/90">{site.hero.body}</p>
         <div class="mt-7 flex flex-col gap-3 sm:flex-row">
           <a href={telHref} class="btn btn-tile">Call {site.phone}</a>
-          <a href="/services" class="btn btn-line">See our services</a>
+          <a href="/services/" class="btn btn-line">See our services</a>
         </div>
       </div>
     </div>
@@ -55,7 +55,7 @@ import { mapsHref, site, telHref, yearsInBusiness } from '../lib/site';
         {
           site.services.map((s) => (
             <li class="border-t border-line last:border-b">
-              <a href={`/services/${s.slug}`} class="group grid grid-cols-[6rem_1fr] items-center gap-5 py-5 sm:grid-cols-[11rem_1fr]">
+              <a href={`/services/${s.slug}/`} class="group grid grid-cols-[6rem_1fr] items-center gap-5 py-5 sm:grid-cols-[11rem_1fr]">
                 <Photo file={s.image} alt={s.imageAlt} art={s.art} widths={[200, 400]} sizes="(min-width: 640px) 11rem, 6rem" class="aspect-[20/13] w-full object-cover" />
                 <span>
                   <span class="block font-display text-3xl font-bold group-hover:text-tile sm:text-4xl">{s.title}</span>
@@ -96,12 +96,12 @@ import { mapsHref, site, telHref, yearsInBusiness } from '../lib/site';
           <p class="eyebrow">Recent work</p>
           <h2 class="section-title mt-2">Roofs around Tampa Bay.</h2>
         </div>
-        <a href="/projects" class="font-semibold underline hover:text-tile">All projects and reviews</a>
+        <a href="/projects/" class="font-semibold underline hover:text-tile">All projects and reviews</a>
       </div>
       <div class="mt-10 grid grid-cols-2 gap-3 lg:grid-cols-4 lg:grid-rows-[15rem_15rem]">
         {
           site.gallery.slice(0, 5).map((g, i) => (
-            <a href="/projects" class:list={['group relative block overflow-hidden', i === 0 ? 'col-span-2 aspect-[3/2] lg:row-span-2 lg:aspect-auto' : 'aspect-[4/3] lg:aspect-auto']}>
+            <a href="/projects/" class:list={['group relative block overflow-hidden', i === 0 ? 'col-span-2 aspect-[3/2] lg:row-span-2 lg:aspect-auto' : 'aspect-[4/3] lg:aspect-auto']}>
               <Photo
                 file={g.image}
                 alt={`${g.title} in ${g.city}`}

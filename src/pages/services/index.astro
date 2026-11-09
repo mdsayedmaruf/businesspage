@@ -6,13 +6,13 @@ import CtaBand from '../../components/CtaBand.astro';
 import { site } from '../../lib/site';
 ---
 
-<Base title="Roofing Services" description={`Roof replacement, repair, tile and metal roofing, inspections and storm repairs in ${site.address.city} and nearby cities.`}>
+<Base title={`Roofing Services in ${site.address.city}, ${site.address.region}`} description={`Roof replacement, repair, tile and metal roofing, inspections and storm repairs in ${site.address.city} and nearby cities.`}>
   <PageHead eyebrow="Services" title="What we can do for your roof." />
   <section class="py-14 lg:py-20">
     <div class="wrap grid gap-x-8 gap-y-12 md:grid-cols-2">
       {
         site.services.map((s) => (
-          <a href={`/services/${s.slug}`} class="group">
+          <a href={`/services/${s.slug}/`} class="group">
             <Photo file={s.image} alt={s.imageAlt} art={s.art} widths={[480, 800]} sizes="(min-width: 768px) 50vw, 100vw" class="aspect-[20/13] w-full object-cover" />
             <h2 class="mt-4 text-4xl group-hover:text-tile">{s.title}</h2>
             <p class="mt-1 text-muted">{s.short}</p>

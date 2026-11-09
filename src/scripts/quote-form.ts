@@ -55,7 +55,7 @@ document.querySelectorAll<HTMLFormElement>('form[data-quote-form]').forEach((for
         headers: { accept: 'application/json' },
       });
       if (response.ok) {
-        window.location.assign('/thanks');
+        window.location.assign('/thanks/');
         return;
       }
       show(FAILURE);

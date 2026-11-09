@@ -33,7 +33,7 @@ function reply(request: Request, ok: boolean, status: number, code: string): Res
   if (request.headers.get('accept')?.includes('application/json')) {
     return Response.json({ ok, code }, { status, headers: { 'cache-control': 'no-store' } });
   }
-  const target = new URL(ok ? '/thanks' : `/contact?error=${code}`, request.url);
+  const target = new URL(ok ? '/thanks/' : `/contact/?error=${code}`, request.url);
   return Response.redirect(target.toString(), 303);
 }
 

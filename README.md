@@ -16,7 +16,7 @@ Node 20 works for building. Deploying with `wrangler` needs Node 22 or newer, or
 ## Create a client preview
 1. Copy this folder for the client.
 2. Edit `src/data/business.json`: name, phone, license, services, cities, reviews, theme colors.
-3. Keep `"demo": true` for previews. It hides the site from search engines and stops the form from sending.
+3. Keep `"demo": true` for previews. It shows the demo banner, stops the form from sending and hides the site from search engines. Set `"demoIndexable": true` to let search engines index a demo while keeping the banner.
 4. Change the demo banner wording for a real prospect, in `src/layouts/Base.astro`, so it says "Concept preview".
 5. Run `npm run build`, then review every page on a phone.
 
@@ -27,7 +27,7 @@ The demo's photos are licensed stock from Unsplash, listed in `src/assets/projec
 
 ## Go live
 1. Confirm every license number, insurance claim and review with the client. Remove anything unconfirmed, including `reviewSummary` figures.
-2. Set `"demo": false`, the real `url`, and `turnstileSiteKey`.
+2. Set `"demo": false`, remove `demoIndexable`, and set the real `url` and `turnstileSiteKey`.
 3. In the Pages project, add encrypted variables: `TURNSTILE_SECRET_KEY`, `RESEND_API_KEY`, `CONTACT_TO`, `CONTACT_FROM`. The form returns an error until all four are set.
 4. Add a Cloudflare WAF rate limiting rule for `/api/contact`. The limit in the function is per-instance and only best effort.
 5. Send a real test request and confirm it arrives.

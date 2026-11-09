@@ -6,7 +6,7 @@ import CtaBand from '../components/CtaBand.astro';
 import { site, yearsInBusiness } from '../lib/site';
 ---
 
-<Base title="About Us" description={`Meet ${site.name}, a licensed and insured roofing contractor serving ${site.address.city} and nearby cities.`}>
+<Base title={`About Our ${site.address.city} Roofing Company`} description={`Meet ${site.name}, a licensed and insured roofing contractor serving ${site.address.city} and nearby cities.`}>
   <PageHead eyebrow="About" title={site.about.headline} />
   <section class="py-14 lg:py-20">
     <div class="wrap grid gap-12 lg:grid-cols-2">
